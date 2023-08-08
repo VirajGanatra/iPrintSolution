@@ -25,6 +25,7 @@ import org.springframework.security.web.SecurityFilterChain;
 //import javax.servlet.ServletContext;
 
 import static com.example.iPrintSolution.SecurityConstants.SIGN_UP_URL;
+import static com.example.iPrintSolution.SecurityConstants.LOGIN_URL;
 
 @Configuration @EnableWebSecurity
 public class WebSecurity{
@@ -78,7 +79,7 @@ public class WebSecurity{
         authenticationManagerBuilder.userDetailsService(userDetailsService);
         authenticationManager = authenticationManagerBuilder.build();
 
-        http.csrf().disable().cors().disable().authorizeHttpRequests().antMatchers(SIGN_UP_URL).permitAll()
+        http.csrf().disable().cors().disable().authorizeHttpRequests().antMatchers(SIGN_UP_URL, LOGIN_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .authenticationManager(authenticationManager)
