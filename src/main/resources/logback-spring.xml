@@ -1,0 +1,101 @@
+<configuration>
+    <property name="DATE" expression="DateTime.Today" />
+    <property name="LOGS_HOME" value="\var\log/applications\iPrintSolution\" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+
+
+    <appender name="regreq" class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS_HOME}${DATE}\API_Logs\Registration_Request.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss};%msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="regres" class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS_HOME}${DATE}\API_Logs\Registration_Response.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss};%msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="logreq" class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS_HOME}${DATE}\API_Logs\Login_Request.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss};%msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="logres" class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS_HOME}${DATE}\API_Logs\Login_Response.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss};%msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="printreq" class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS_HOME}${DATE}\API_Logs\AddPrinter_Request.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss};%msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="printres" class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS_HOME}${DATE}\API_Logs\AddPrinter_Response.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss};%msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="regreq" level="info" additivity="false">
+        <appender-ref ref="regreq" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="regres" level="info" additivity="false">
+        <appender-ref ref="regres" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="logreq" level="info" additivity="false">
+        <appender-ref ref="logreq" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="logres" level="info" additivity="false">
+        <appender-ref ref="logres" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="printreq" level="info" additivity="false">
+        <appender-ref ref="printreq" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="printres" level="info" additivity="false">
+        <appender-ref ref="printres" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+</configuration>
