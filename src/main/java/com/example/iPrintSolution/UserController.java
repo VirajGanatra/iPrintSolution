@@ -17,7 +17,7 @@ import java.io.IOException;
 public class UserController {
 
 
-    //private Client client = new Client();
+
     @Autowired
     ClientRepository clientRepository;
 
@@ -30,13 +30,10 @@ public class UserController {
             Client temp = new ObjectMapper()
                     .readValue(req.getInputStream(), Client.class);
 
-            System.out.println(temp.toString());
-            System.out.println(temp.getPassword());
             System.out.println(bCryptPasswordEncoder.encode(temp.getPassword()));
 
             if (!(clientRepository.existsByUsername(temp.getUsername()))) {
                 temp.setPassword(bCryptPasswordEncoder.encode(temp.getPassword()));
-                System.out.println(temp.toString());
                 clientRepository.save(temp);
                 System.out.println("Client saved");
             } else {

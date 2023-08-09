@@ -19,43 +19,9 @@ import java.util.Map;
 @Configuration
 public class BeanConfiguration {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
     @Bean
     public static BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
-
-//    @Bean
-//    public static MappedInterceptor loggingInterceptor() {
-//        return new MappedInterceptor(null, new LoggingInterceptor());
-//    }
-
-//    @Bean
-//    public static LoggingInterceptor loggingInterceptor() {
-//        return new LoggingInterceptor();
-//    }
-
-//    @Bean
-//    public SimpleUrlHandlerMapping simpleUrlHandlerMapping () {
-//        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("/**", httpRequestHandler());
-//        mapping.setUrlMap(map);
-//        mapping.setInterceptors(new LoggingInterceptor());
-//        return mapping;
-//    }
-//
-//    @Bean
-//    HttpRequestHandler httpRequestHandler () {
-//        return new MyHttpRequestHandler();
-//    }
-
-
-
-
 
 }

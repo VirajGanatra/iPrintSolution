@@ -1,6 +1,5 @@
 package com.example.iPrintSolution;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.persistence.*;
 
