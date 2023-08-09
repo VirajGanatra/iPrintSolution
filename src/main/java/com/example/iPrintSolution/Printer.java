@@ -7,7 +7,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "printers")
 public class Printer {
-    @Id @GeneratedValue
+
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false)

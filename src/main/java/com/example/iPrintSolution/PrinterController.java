@@ -18,9 +18,15 @@ public class PrinterController {
 
      @PostMapping("/printer")
     public void createPrinter(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        Printer temp = new ObjectMapper()
-                .readValue(req.getInputStream(), Printer.class);
-        printerRepository.save(temp);
+         try {
+             Printer temp = new ObjectMapper()
+                     .readValue(req.getInputStream(), Printer.class);
+             printerRepository.save(temp);
+         } catch (Exception e) {
+             System.out.println("Error creating printer");
+             e.printStackTrace();
+         }
+
      }
 
     @GetMapping("/printer")

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "users")
 public class Client {
     @Column(name = "id", nullable = false)
-    private @Id @GeneratedValue long id;
+    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) long id;
 
     @Column(name = "username", nullable = false)
     private String username;
