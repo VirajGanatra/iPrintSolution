@@ -27,10 +27,12 @@ public class BeanConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public static MappedInterceptor loggingInterceptor() {
-        return new MappedInterceptor(null, new LoggingInterceptor());
-    }
+
+
+//    @Bean
+//    public static MappedInterceptor loggingInterceptor() {
+//        return new MappedInterceptor(null, new LoggingInterceptor());
+//    }
 
 //    @Bean
 //    public static LoggingInterceptor loggingInterceptor() {

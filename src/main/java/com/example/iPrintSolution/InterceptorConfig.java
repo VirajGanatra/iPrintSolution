@@ -16,24 +16,15 @@ import java.util.Map;
 @EnableWebMvc
 public class InterceptorConfig implements WebMvcConfigurer {
 
-////    @Autowired
-////    LoggingInterceptor loggingInterceptor;
-//
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        System.out.println("addInterceptors");
-//        registry.addInterceptor(new LoggingInterceptor()).addPathPatterns("/**");
-//    }
-//
-//    @Bean
-//    public SimpleUrlHandlerMapping simpleUrlHandlerMapping () {
-//        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("/app", httpRequestHandler());
-//        mapping.setUrlMap(map);
-//        mapping.setInterceptors(new Object[]{new MyInterceptor()});
-//        return mapping;
-//    }
+    @Autowired
+    LoggingInterceptor loggingInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        System.out.println("addInterceptors");
+        registry.addInterceptor(loggingInterceptor).addPathPatterns("/**");
+    }
+
 
 
 }

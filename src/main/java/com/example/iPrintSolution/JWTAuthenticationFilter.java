@@ -3,6 +3,8 @@ package com.example.iPrintSolution;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,6 +13,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +26,13 @@ import java.util.stream.Collectors;
 import static com.example.iPrintSolution.SecurityConstants.EXPIRATION_TIME;
 import static com.example.iPrintSolution.SecurityConstants.SECRET;
 
+@CrossOrigin
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-
     private final ClientRepository clientRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     AuthenticationManager authenticationManager;
 
 
@@ -44,16 +49,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 
         try {
-
             Client temp = new ObjectMapper()
                     .readValue(req.getInputStream(), Client.class);
 
-            System.out.println(temp.toString());
 
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(temp.getUsername(), temp.getPassword(), new ArrayList<>());
 
-            System.out.println(token.toString());
-            System.out.println(token.getCredentials());
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             temp.getUsername(),
