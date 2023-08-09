@@ -1,10 +1,13 @@
 # iPrintSolution
 iPrintSolution CompuLynx - currently just a REST API without a frontend
 
-## Requirements:
+## Requirements
+- Java 8
+- Spring Boot
 - Maven
 - Postman
 - PostgreSQL
+
 
 
 To run the project , we need to create the PostgreSQL database (since this is stil in the testing stage). Thus, Postgres must be installed. To do this, we first need to go to the PSQL command line utility using ```sudo -u postgres psql```. Then, run ```ALTER USER postgres PASSWORD 'default'; ``` to set a password. Alternatively, go into the application.properties file in src/resources and set the password to the current password.
@@ -17,7 +20,7 @@ Build the project using the mvn spring-boot:run goal. It will be available at ht
 
 When sending requests via POSTMAN, ensure a JSON body is added to each request. Upon successful sign-in, the JWT Bearer Token will be given in the response to the POST request.
 
-## Requests
+## Available Requests
 - POST /session (login)
 - POST /user (signup)
 - POST /printer (add printer)
