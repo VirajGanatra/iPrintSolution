@@ -16,7 +16,7 @@ Then, we need to create the databases using the following. First, the users:
 ```CREATE TABLE users(id SERIAL PRIMARY KEY, username VARCHAR(100), password VARCHAR(100));```. Then, the printers:
 ```CREATE TABLE printers(id SERIAL PRIMARY KEY, name VARCHAR(100), ip VARCHAR(100));```. These are hosted at the standard http://localhost:5432 - if not, this will need to be updated in the application.properties file.
 
-Clone the project into a directory of choice. Then, navigate to the root iPrintSolution folder. Then build the project by running the ```mv spring-boot:run``` goal from this folder. It will be available at http://localhost:8080/. POSTMAN can then be used to send requests to it.
+Clone the project into a directory of choice. Then, navigate to the root iPrintSolution folder. Then build the project by running the ```mvn spring-boot:run``` goal from this folder. It will be available at http://localhost:8080/. POSTMAN can then be used to send requests to it.
 
 When sending requests via POSTMAN, ensure a JSON body is added to each request. Upon successful sign-in, the JWT Bearer Token will be given in the response to the POST request.
 
