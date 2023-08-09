@@ -1,7 +1,13 @@
 package com.example.iPrintSolution;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-interface ClientRepository extends JpaRepository<Client, Long> {
-    Client findByUsername(String username);
+import java.util.List;
+
+@Repository
+public interface ClientRepository extends JpaRepository<Client, Long> {
+    List<Client> findByUsername(String username);
+
+    boolean existsByUsername(String username);
 }

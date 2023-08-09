@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class Client {
+    @Column(name = "id", nullable = false)
     private @Id @GeneratedValue long id;
 
     @Column(name = "username", nullable = false)
@@ -14,6 +15,14 @@ public class Client {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    public Client() {
+    }
+
+    public Client(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public long getId() {
         return id;
@@ -42,6 +51,7 @@ public class Client {
     @Override
     public boolean equals(Object o){
         if (this == o){
+            System.out.println("this == o");
             return true;
         } else if (!(o instanceof Client)) {
             return false;
@@ -49,5 +59,10 @@ public class Client {
             Client client = (Client) o;
             return Objects.equals(client.id, this.id) && Objects.equals(client.username, this.username) && Objects.equals(client.password, this.password);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + '}';
     }
 }

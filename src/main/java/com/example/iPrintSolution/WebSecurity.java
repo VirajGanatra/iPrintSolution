@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.web.DefaultSecurityFilterChain;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 //import org.springframework.web.context.WebApplicationContext;
 //import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -36,8 +37,11 @@ public class WebSecurity{
     @Autowired
     private UserDetailsService userDetailsService;
 
-    public WebSecurity(UserDetailsService userService) {
+    private ClientRepository clientRepository;
+
+    public WebSecurity(UserDetailsService userService, ClientRepository clientRepository) {
         this.userDetailsService = userService;
+        this.clientRepository = clientRepository;
     }
 
     /*@Bean
@@ -71,23 +75,33 @@ public class WebSecurity{
 
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private ClientDetailsService CustomUserDetailService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        System.out.println("filterChain");
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(userDetailsService);
+        authenticationManagerBuilder.userDetailsService(CustomUserDetailService).passwordEncoder(bCryptPasswordEncoder);
         authenticationManager = authenticationManagerBuilder.build();
+
 
         http.csrf().disable().cors().disable().authorizeHttpRequests().antMatchers(SIGN_UP_URL, LOGIN_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .authenticationManager(authenticationManager)
-                .addFilter(new JWTAuthenticationFilter(authenticationManager))
-                .addFilter(new JWTAuthorizationFilter(authenticationManager))
+                .addFilter(new JWTAuthenticationFilter(authenticationManager, clientRepository, bCryptPasswordEncoder))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager, clientRepository, bCryptPasswordEncoder))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         return http.build();
     }
+
+
 
 
 }

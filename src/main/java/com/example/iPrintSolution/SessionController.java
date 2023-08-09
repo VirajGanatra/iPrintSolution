@@ -2,6 +2,7 @@
 //
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.web.bind.annotation.RestController;
 //
 //import java.util.List;
@@ -12,7 +13,7 @@
 //    ClientRepository ClientRepository;
 //
 //    @PostMapping("/session")
-//    public Client login(String username, String password) {
+//    public Client login(@RequestBody String username, String password) {
 //        Client client = ClientRepository.findByUsername(username);
 //        if (client.getPassword().equals(password)) {
 //            return client;

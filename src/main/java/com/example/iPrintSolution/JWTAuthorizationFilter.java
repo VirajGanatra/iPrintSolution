@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -18,8 +19,13 @@ import static com.example.iPrintSolution.SecurityConstants.*;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    public JWTAuthorizationFilter(AuthenticationManager authManager) {
+    private final ClientRepository clientRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public JWTAuthorizationFilter(AuthenticationManager authManager, ClientRepository clientRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         super(authManager);
+        this.clientRepository = clientRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
