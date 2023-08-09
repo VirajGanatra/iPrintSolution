@@ -1,6 +1,5 @@
 <configuration>
-    
-    <property name="LOGS_HOME" value="/var/log/applications/iPrintSolution/" />
+
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">

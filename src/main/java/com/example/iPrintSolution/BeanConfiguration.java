@@ -8,6 +8,13 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.HttpRequestHandler;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.handler.MappedInterceptor;
+import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class BeanConfiguration {
@@ -20,6 +27,30 @@ public class BeanConfiguration {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public static MappedInterceptor loggingInterceptor() {
+        return new MappedInterceptor(null, new LoggingInterceptor());
+    }
+
+//    @Bean
+//    public static LoggingInterceptor loggingInterceptor() {
+//        return new LoggingInterceptor();
+//    }
+
+//    @Bean
+//    public SimpleUrlHandlerMapping simpleUrlHandlerMapping () {
+//        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("/**", httpRequestHandler());
+//        mapping.setUrlMap(map);
+//        mapping.setInterceptors(new LoggingInterceptor());
+//        return mapping;
+//    }
+//
+//    @Bean
+//    HttpRequestHandler httpRequestHandler () {
+//        return new MyHttpRequestHandler();
+//    }
 
 
 

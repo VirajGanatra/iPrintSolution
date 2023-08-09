@@ -44,36 +44,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 
         try {
-            //System.out.println(httpServletRequestToString(req));
+
             Client temp = new ObjectMapper()
                     .readValue(req.getInputStream(), Client.class);
 
             System.out.println(temp.toString());
-//            System.out.println("temp");
-//            System.out.println(temp.toString());
-//
-//            System.out.println(temp.getUsername());
-//            List<Client> clients = clientRepository.findByUsername(temp.getUsername());
 
-
-//            System.out.println(clients.toString());
-//            for (Client client : clients) {
-//                if (client.equals(temp)) {
-//                    System.out.println("Client found");
-//                } else {
-//                    System.out.println("Client not found");
-//                    System.out.println(client.toString());
-//                }
-//            }
-
-
-//            String x = bCryptPasswordEncoder.encode("test");
-//            System.out.println(x);
-//            temp.setPassword(x);
-
-            //System.out.println(auth.toString());
-            //temp.setPassword(bCryptPasswordEncoder.encode(temp.getPassword()));
-            //System.out.println(temp.toString());
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(temp.getUsername(), temp.getPassword(), new ArrayList<>());
 
             System.out.println(token.toString());
