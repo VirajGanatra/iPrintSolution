@@ -18,7 +18,7 @@ Then, we need to create the databases using the following. First, the users:
 
 Clone the project into a directory of choice. Then, navigate to the root iPrintSolution folder. Then build the project by running the ```mvn spring-boot:run``` goal from this folder. It will be available at http://localhost:8080/. POSTMAN can then be used to send requests to it.
 
-When sending requests via POSTMAN, ensure a JSON body is added to each request. Upon successful sign-in, the JWT Bearer Token will be given in the response to the POST request.
+When sending requests via POSTMAN, ensure a JSON body is added to each request. Upon successful sign-in, the JWT Bearer Token will be given in the response to the POST request which is needed for the POST /printer request.
 
 ## Available Requests
 - POST /session (login); params username/password
