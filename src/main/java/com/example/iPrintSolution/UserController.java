@@ -51,8 +51,8 @@ public class UserController {
         System.out.println("create user");
     }
 
-    @GetMapping("/user")
-    public void getUser() {
-        System.out.println("get user");
-    }
+//    @GetMapping("/user")
+//    public void getUser() {
+//        System.out.println("get user");
+//    }
 }
