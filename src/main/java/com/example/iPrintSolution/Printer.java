@@ -1,11 +1,18 @@
 package com.example.iPrintSolution;
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "printers")
-public class Printer {
+@Schema(
+        description = "Printer schema",
+        type = "Printer",
+        example = " {\"name\" :\"printer\" ,"
+                + "\"ip\": \"0.0.1\"}")
+    public class Printer {
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

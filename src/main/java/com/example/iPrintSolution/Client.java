@@ -1,12 +1,22 @@
 package com.example.iPrintSolution;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.Objects;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Schema(
+        description = "User schema",
+        type = "Client",
+        example = " {\"username\" :\"testuser\" ,"
+                + "\"password\": \"testpassword\"}")
 public class Client {
+
+
+
     @Column(name = "id", nullable = false)
     private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) long id;
 

@@ -1,12 +1,14 @@
 package com.example.iPrintSolution;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,8 +26,10 @@ public class UserController {
      @Autowired
      private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Operation(summary = "Create a user", description = "Adds user to database. Password is stored in the database as a hash.")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successful registration")})
     @PostMapping("/user")
-    public void createUser(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    public void createUser(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "User Credentials", required = true, content = @Content(schema = @Schema(implementation = Client.class))) @RequestBody HttpServletRequest req , HttpServletResponse res) throws IOException {
         try {
             Client temp = new ObjectMapper()
                     .readValue(req.getInputStream(), Client.class);

@@ -12,8 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static com.example.iPrintSolution.SecurityConstants.SIGN_UP_URL;
-import static com.example.iPrintSolution.SecurityConstants.LOGIN_URL;
+import static com.example.iPrintSolution.SecurityConstants.*;
 
 @Configuration @EnableWebSecurity
 public class WebSecurity{
@@ -46,7 +45,7 @@ public class WebSecurity{
         authenticationManager = authenticationManagerBuilder.build();
 
 
-        http.csrf().disable().cors().disable().authorizeHttpRequests().antMatchers(SIGN_UP_URL, LOGIN_URL).permitAll()
+        http.csrf().disable().cors().disable().authorizeHttpRequests().antMatchers(SIGN_UP_URL, LOGIN_URL, "/swagger-ui/*", "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**", "/v3/**", "/static/api-docs.yaml").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .authenticationManager(authenticationManager)
