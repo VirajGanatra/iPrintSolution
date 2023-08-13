@@ -27,8 +27,8 @@ public class PrinterController {
 
     @Operation(summary = "Create a printer", description = "Adds printer to database.")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successful printer creation"), @ApiResponse(responseCode = "403", description = "Access forbidden")})
-    @SecurityRequirement(name = "JWT Auth")
-    @Secured({"ROLE_USER", "ROLE_SUPERADMIN"})
+    //@SecurityRequirement(name = "JWT Auth")
+    //@Secured({"ROLE_USER", "ROLE_SUPERADMIN"})
     @PostMapping("/printer")
     public void createPrinter(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Printer Details", required = true, content = @Content(schema = @Schema(implementation = Printer.class))) @RequestBody HttpServletRequest req, HttpServletResponse res) throws IOException {
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -32,7 +33,7 @@ public class UserController {
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successful registration")})
 
     @PostMapping("/user")
-    public void createUser(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "User Credentials", required = true, content = @Content(schema = @Schema(implementation = Client.class))) @RequestBody HttpServletRequest req , HttpServletResponse res) throws IOException {
+    public void createUser(@org.springframework.web.bind.annotation.RequestBody HttpServletRequest req , HttpServletResponse res) throws IOException {
         try {
             System.out.println("tttt");
             Client temp = new ObjectMapper()
@@ -51,7 +52,7 @@ public class UserController {
             }
         } catch (Exception e) {
             System.out.println("Error creating user");
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
 
         System.out.println("create user");
