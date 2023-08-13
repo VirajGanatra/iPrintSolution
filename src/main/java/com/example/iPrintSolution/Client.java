@@ -12,7 +12,8 @@ import javax.persistence.*;
         description = "User schema",
         type = "Client",
         example = " {\"username\" :\"testuser\" ,"
-                + "\"password\": \"testpassword\"}")
++ "\"password\": \"testpassword\", " + "\"role\": \"ROLE_USER\"}"
+)
 public class Client {
 
 
@@ -26,12 +27,15 @@ public class Client {
     @Column(name = "password", nullable = false)
     private String password;
 
-    public Client() {
-    }
+    @Column(name = "role", nullable = false)
+    private String role;
 
-    public Client(String username, String password) {
+    public Client() {}
+
+    public Client(String username, String password, String role) {
         this.username = username;
         this.password = password;
+        this.role=role;
     }
 
     public long getId() {
@@ -58,6 +62,14 @@ public class Client {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o){
         if (this == o){
@@ -67,12 +79,12 @@ public class Client {
             return false;
         } else {
             Client client = (Client) o;
-            return Objects.equals(client.id, this.id) && Objects.equals(client.username, this.username) && Objects.equals(client.password, this.password);
+            return Objects.equals(client.id, this.id) && Objects.equals(client.username, this.username) && Objects.equals(client.password, this.password) && Objects.equals(client.role, this.role);
         }
     }
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + '}';
+        return "Client{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + ", role='" + role + '\'' + '}';
     }
 }

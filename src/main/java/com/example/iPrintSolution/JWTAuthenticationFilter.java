@@ -52,11 +52,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Client temp = new ObjectMapper()
                     .readValue(req.getInputStream(), Client.class);
 
+            CustomUserDetails tempDTO= new CustomUserDetails(temp);
+
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             temp.getUsername(),
                             temp.getPassword(),
-                            new ArrayList<>())
+                           tempDTO.getAuthorities())
             );
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -75,6 +77,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             String token = JWT.create()
                     .withSubject(((CustomUserDetails) auth.getPrincipal()).getUsername())
                     .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                    .withClaim("role", ((CustomUserDetails) auth.getPrincipal()).getRole())
                     .sign(Algorithm.HMAC512(SECRET.getBytes()));
 
             String body = "Token for user " + ((CustomUserDetails) auth.getPrincipal()).getUsername() + ": " + token;

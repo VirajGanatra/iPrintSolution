@@ -6,7 +6,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,13 +30,17 @@ public class UserController {
 
     @Operation(summary = "Create a user", description = "Adds user to database. Password is stored in the database as a hash.")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successful registration")})
+
     @PostMapping("/user")
     public void createUser(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "User Credentials", required = true, content = @Content(schema = @Schema(implementation = Client.class))) @RequestBody HttpServletRequest req , HttpServletResponse res) throws IOException {
         try {
+            System.out.println("tttt");
             Client temp = new ObjectMapper()
                     .readValue(req.getInputStream(), Client.class);
 
-            System.out.println(bCryptPasswordEncoder.encode(temp.getPassword()));
+            System.out.println(temp.getUsername());
+
+//            System.out.println(bCryptPasswordEncoder.encode(temp.getPassword()));
 
             if (!(clientRepository.existsByUsername(temp.getUsername()))) {
                 temp.setPassword(bCryptPasswordEncoder.encode(temp.getPassword()));
