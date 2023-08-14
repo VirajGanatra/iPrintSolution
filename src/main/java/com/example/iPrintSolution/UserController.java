@@ -31,17 +31,11 @@ public class UserController {
 
     @Operation(summary = "Create a user", description = "Adds user to database. Password is stored in the database as a hash.")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successful registration")})
-
+    @SecurityRequirement(name = "JWT Auth")
+    @Secured({"ROLE_ADMIN", "ROLE_SUPERADMIN"})
     @PostMapping("/user")
-    public void createUser(@org.springframework.web.bind.annotation.RequestBody HttpServletRequest req , HttpServletResponse res) throws IOException {
+    public void createUser(@RequestBody(description = "User Credentials", required = true, content = @Content(schema = @Schema(implementation = Client.class))) @org.springframework.web.bind.annotation.RequestBody Client temp, HttpServletResponse res) throws IOException {
         try {
-            System.out.println("tttt");
-            Client temp = new ObjectMapper()
-                    .readValue(req.getInputStream(), Client.class);
-
-            System.out.println(temp.getUsername());
-
-//            System.out.println(bCryptPasswordEncoder.encode(temp.getPassword()));
 
             if (!(clientRepository.existsByUsername(temp.getUsername()))) {
                 temp.setPassword(bCryptPasswordEncoder.encode(temp.getPassword()));
