@@ -60,10 +60,13 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
                     .verify(token.replace(TOKEN_PREFIX, ""));
 
             String user = dc.getSubject();
-            String role = dc.getClaim("role").asString();
+            List<String> roles = dc.getClaim("roles").asList(String.class);
 
             List<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(role));
+            for (String role: roles) {
+                authorities.add(new SimpleGrantedAuthority(role));
+            }
+
 
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null, authorities);

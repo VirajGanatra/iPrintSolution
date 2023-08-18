@@ -72,12 +72,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication auth) throws IOException {
 
+        List<String> roles = Arrays.asList(((CustomUserDetails) auth.getPrincipal()).getRole());
+
         try {
 
             String token = JWT.create()
                     .withSubject(((CustomUserDetails) auth.getPrincipal()).getUsername())
                     .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                    .withClaim("role", ((CustomUserDetails) auth.getPrincipal()).getRole())
+                    .withClaim("roles", roles)
                     .sign(Algorithm.HMAC512(SECRET.getBytes()));
 
             String body = "Token for user " + ((CustomUserDetails) auth.getPrincipal()).getUsername() + ": " + token;

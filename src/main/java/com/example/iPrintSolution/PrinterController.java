@@ -1,13 +1,11 @@
 package com.example.iPrintSolution;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -18,6 +16,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @CrossOrigin
 @RestController
@@ -46,4 +45,29 @@ public class PrinterController {
 //    public void getPrinter(){
 //        //return webpage with registration form
 //    }
+
+
+    private WebClient localApiClient;
+
+    @Autowired
+    public void UserService(WebClient localApiClient) {
+        this.localApiClient = localApiClient;
+    }
+
+    @Operation(summary = "Print account details", description = "Prints account details found in json-server database.")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Successful printing"), @ApiResponse(responseCode = "403", description = "Access forbidden")})
+    @SecurityRequirement(name = "JWT Auth")
+    @Secured("PRINT")
+    @PostMapping("/print")
+    public void printDetails(@RequestBody String body, HttpServletResponse res) throws IOException {
+        try {
+            String result = localApiClient.post().uri("http://localhost:3001/account").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).bodyValue(body).retrieve().bodyToMono(String.class).block();
+            assert result != null;
+            res.getWriter().write(result);
+        } catch (Exception e) {
+            System.out.println("Error printing details");
+            e.printStackTrace();
+        }
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.iPrintSolution;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.hibernate.annotations.Type;
 
 import java.util.Objects;
 
@@ -29,6 +30,12 @@ public class Client {
 
     @Column(name = "role", nullable = false)
     private String role;
+
+
+
+    @Column(name = "roles", nullable = false)
+    @Type(type = "com.example.iPrintSolution.GenericArrayUserType")
+    private String[] roles;
 
     public Client() {}
 
@@ -68,6 +75,14 @@ public class Client {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String[] getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String[] roles) {
+        this.roles = roles;
     }
 
     @Override

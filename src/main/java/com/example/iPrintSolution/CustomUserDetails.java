@@ -21,7 +21,9 @@ public class CustomUserDetails implements UserDetails
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+        for (String role: user.getRoles()) {
+            authorities.add(new SimpleGrantedAuthority(role));
+        }
         return authorities;
     }
 
@@ -40,6 +42,10 @@ public class CustomUserDetails implements UserDetails
     public String getUsername()
     {
         return user.getUsername();
+    }
+
+    public String[] getRoles(){
+        return user.getRoles();
     }
 
     @Override
