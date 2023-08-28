@@ -46,7 +46,7 @@ public class WebSecurity{
         authenticationManager = authenticationManagerBuilder.build();
 
 
-        http.csrf().disable().cors().disable().authorizeHttpRequests().antMatchers(LOGIN_URL, SIGN_UP_URL, "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**", "/v3/**", "/swagger-ui/**").permitAll()
+        http.csrf().disable().cors().disable().authorizeHttpRequests().antMatchers(LOGIN_URL, SIGN_UP_URL, "/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**", "/v3/**", "/swagger-ui/**", "/update").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .authenticationManager(authenticationManager)
