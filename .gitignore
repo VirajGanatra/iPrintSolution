@@ -3,6 +3,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+.settings/**
+logs/**
+
 
 ### STS ###
 .apt_generated
@@ -31,3 +34,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Maven ##
+.mvn/**
+mvnw
+mvnw.cmd
+
+### Logs ##
+AddPrinter_Request.log
+AddPrinter_Response.log
+Login_Request.log
+Login_Response.log
+Registration_Request.log
+Registration_Response.log
