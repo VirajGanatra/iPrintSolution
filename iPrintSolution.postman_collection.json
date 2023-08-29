@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "57f75469-90d7-4ca8-8374-1604999991ce",
+		"name": "iPrintSolution",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28814646"
+	},
+	"item": [
+		{
+			"name": "/printer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0YWRtIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE2OTE5OTIzNDd9.uWm2Q3-XkBtl1BbnOlI9yhmlqtxW2S11mRDPpL1YNuqYExhHu1vSmzarctZLcyjLiCj6bI6aB2o7xoirmxz8qQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImV4cCI6MTY5MTU2MzE5MH0.LfskXIwilUohLkCLaE1DQ6K-smzaJf1iCs0nRPo7yugbEw410u1rONSAyysgn9sTMqT68HT8Q1jTgPWs50CU8Q",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"print_test18\",\n    \"ip\": \"0.0.1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/printer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"printer"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/print",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0YWRtIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE2OTE5OTIzNDd9.uWm2Q3-XkBtl1BbnOlI9yhmlqtxW2S11mRDPpL1YNuqYExhHu1vSmzarctZLcyjLiCj6bI6aB2o7xoirmxz8qQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImV4cCI6MTY5MTU2MzE5MH0.LfskXIwilUohLkCLaE1DQ6K-smzaJf1iCs0nRPo7yugbEw410u1rONSAyysgn9sTMqT68HT8Q1jTgPWs50CU8Q",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountNumber\": \"0100000009999\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/printer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"printer"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0YWRtIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE2OTE5OTIzNDd9.uWm2Q3-XkBtl1BbnOlI9yhmlqtxW2S11mRDPpL1YNuqYExhHu1vSmzarctZLcyjLiCj6bI6aB2o7xoirmxz8qQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImV4cCI6MTY5MTU2MzE5MH0.LfskXIwilUohLkCLaE1DQ6K-smzaJf1iCs0nRPo7yugbEw410u1rONSAyysgn9sTMqT68HT8Q1jTgPWs50CU8Q",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpassword\",\n  \"role\": \"ROLE_USER\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/printer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"printer"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/session",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0c2EiLCJyb2xlIjoiUk9MRV9TVVBFUkFETUlOIiwiZXhwIjoxNjkxOTkxNjU4fQ.ja7TJ5XSZHoAnynaHJgQGhFOnFldC3kSW56C4HdwxpHdVKk-7-DUCzUx5DHmTGE1CpTr3pKulZAlsbtF9hdwWw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testadm\",\n    \"password\": \"testpw\",\n    \"role\": \"ROLE_ADMIN\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/session",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0c2EiLCJyb2xlIjoiUk9MRV9TVVBFUkFETUlOIiwiZXhwIjoxNjkxOTkxNjU4fQ.ja7TJ5XSZHoAnynaHJgQGhFOnFldC3kSW56C4HdwxpHdVKk-7-DUCzUx5DHmTGE1CpTr3pKulZAlsbtF9hdwWw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accName\": \"name\",\n  \"accNo\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/session",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"session"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
