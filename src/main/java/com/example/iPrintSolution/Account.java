@@ -28,7 +28,6 @@ public class Account {
         this.accName = accName;
     }
 
-
     public int getAccNo() {
         return accNo;
     }
