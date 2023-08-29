@@ -11,6 +11,8 @@ import javax.persistence.Entity;
         example = " {\"accName\" :\"name\" ,"
                 + "\"accNo\": \"1234\"}"
 )
+
+
 public class Account {
     String accName;
     int accNo;

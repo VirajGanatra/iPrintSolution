@@ -1,15 +1,21 @@
 package com.example.iPrintSolution;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.sun.jna.Native;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 
+@CrossOrigin
+@RestController
 public class UpdateController {
 
+    @Operation(summary = "Access AccDLL", description = "Passes account details to AccDLL, returning dummy response.")
     @PostMapping("/update")
     public void updateAcc(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Account Details", required = true, content = @Content(schema = @Schema(implementation = Account.class))) @RequestBody Account temp, HttpServletResponse response) {
 

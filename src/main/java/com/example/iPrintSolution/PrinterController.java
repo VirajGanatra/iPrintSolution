@@ -1,5 +1,6 @@
 package com.example.iPrintSolution;
 
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,6 +18,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.reactive.function.client.WebClient;
+
 
 @CrossOrigin
 @RestController
@@ -59,7 +61,7 @@ public class PrinterController {
     @SecurityRequirement(name = "JWT Auth")
     @Secured("PRINT")
     @PostMapping("/print")
-    public void printDetails(@RequestBody String body, HttpServletResponse res) throws IOException {
+    public void printDetails(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Account Number", required = true, content = @Content(examples = @ExampleObject(name = "Valid", value = " {\"accountNumber\": \"0100000009999\"}", description = "Valid account number"))) @RequestBody String body, HttpServletResponse res) throws IOException {
         try {
             String result = localApiClient.post().uri("http://localhost:3001/account").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).bodyValue(body).retrieve().bodyToMono(String.class).block();
             assert result != null;
@@ -68,6 +70,5 @@ public class PrinterController {
             System.out.println("Error printing details");
             e.printStackTrace();
         }
-
     }
 }

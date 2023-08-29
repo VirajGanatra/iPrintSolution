@@ -3,6 +3,7 @@ package com.example.iPrintSolution;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.Type;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import javax.persistence.*;
@@ -43,6 +44,12 @@ public class Client {
         this.username = username;
         this.password = password;
         this.role=role;
+    }
+
+    public Client(String username, String password, String[] roles) {
+        this.username = username;
+        this.password = password;
+        this.roles=roles;
     }
 
     public long getId() {
@@ -94,12 +101,12 @@ public class Client {
             return false;
         } else {
             Client client = (Client) o;
-            return Objects.equals(client.id, this.id) && Objects.equals(client.username, this.username) && Objects.equals(client.password, this.password) && Objects.equals(client.role, this.role);
+            return Objects.equals(client.id, this.id) && Objects.equals(client.username, this.username) && Objects.equals(client.password, this.password) && Arrays.equals(client.roles, this.roles);
         }
     }
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + ", role='" + role + '\'' + '}';
+        return "Client{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + ", roles='" + Arrays.toString(roles) + '\'' + '}';
     }
 }
