@@ -1,6 +1,7 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.iPrintSolution.objects.client.Client;
+import com.example.iPrintSolution.objects.client.ClientRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,7 +14,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 

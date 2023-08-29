@@ -1,5 +1,7 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.controllers;
 
+import com.example.iPrintSolution.AccDLL;
+import com.example.iPrintSolution.objects.account.Account;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

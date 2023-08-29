@@ -1,4 +1,4 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.objects.client;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

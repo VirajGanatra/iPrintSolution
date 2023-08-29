@@ -1,4 +1,4 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.objects.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.objects.account;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

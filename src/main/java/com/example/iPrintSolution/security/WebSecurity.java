@@ -1,5 +1,7 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.security;
 
+import com.example.iPrintSolution.objects.client.ClientDetailsService;
+import com.example.iPrintSolution.objects.client.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static com.example.iPrintSolution.SecurityConstants.*;
+import static com.example.iPrintSolution.security.SecurityConstants.*;
 
 @Configuration @EnableWebSecurity @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurity{

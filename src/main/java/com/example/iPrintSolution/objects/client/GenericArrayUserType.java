@@ -1,4 +1,4 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.objects.client;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;

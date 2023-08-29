@@ -1,4 +1,4 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.security;
 
 public class SecurityConstants {
     public static final String SECRET = "SECRET_KEY";

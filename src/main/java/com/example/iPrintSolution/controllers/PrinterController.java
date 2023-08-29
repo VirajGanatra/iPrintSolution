@@ -1,5 +1,7 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.controllers;
 
+import com.example.iPrintSolution.objects.printer.Printer;
+import com.example.iPrintSolution.objects.printer.PrinterRepository;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;

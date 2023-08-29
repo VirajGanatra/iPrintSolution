@@ -1,4 +1,4 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.objects.client;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.Type;
@@ -35,7 +35,7 @@ public class Client {
 
 
     @Column(name = "roles", nullable = false)
-    @Type(type = "com.example.iPrintSolution.GenericArrayUserType")
+    @Type(type = "com.example.iPrintSolution.objects.client.GenericArrayUserType")
     private String[] roles;
 
     public Client() {}

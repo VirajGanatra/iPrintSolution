@@ -1,4 +1,4 @@
-package com.example.iPrintSolution;
+package com.example.iPrintSolution.configs;
 
 
 import org.springframework.context.annotation.Bean;
