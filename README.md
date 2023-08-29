@@ -17,8 +17,8 @@ To run the project , we need to create the PostgreSQL database (since this is st
 
 Then, we need to create the databases using the backup.sql file. Clone the project into a directory of choice. Run ```CREATE USER iprint``` and ```CREATE DATABASE iPrintSolution``` from the psql command-line utility, then navigate to it using ```\c iPrintSolution```. Then simply run ```\i backup.sql``` to import the database.
 
- Then, navigate to the root iPrintSolution folder. Ensure that jsonserv is running (see its ReadME for instructions). To run this as a Windows Service, use NSSM. Run ``nssm install``
- , and in the resulting GUI window, set the path to your java.exe file, Startup Directory to the "target" folder where the JAR is contained, and arguments to `-jar "<path:to:jar>"` (where path:to:jar is the actual path to the jar). The JAR can also be created manually using `mvn clean package`.
+ Then, navigate to the root iPrintSolution folder. Ensure that jsonserv is running (see its ReadME for instructions). The JAR can be created using `mvn clean package`. To run this JAR as a Windows Service, use NSSM. Run ``nssm install``
+ , and in the resulting GUI window, set the path to your java.exe file, Startup Directory to the "target" folder where the JAR is contained, and arguments to `-jar "<path:to:jar>"` (where path:to:jar is the actual path to the jar).
 
 Otherwise, build the project by running the ```mvn spring-boot:run``` goal from this folder. It will be available at http://localhost:8080/. POSTMAN can then be used to send requests to it. The list of available requests and parameters is available at http://localhost:8080/swagger-ui/index.html. Additionally, to some requests a JWT token will need to be included in the header (which will be in the reply to the login request). THis JWT will authorize the request based on a username, password, and their role/authority.
 
